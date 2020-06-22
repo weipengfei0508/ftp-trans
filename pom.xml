@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ztxy.dwps</groupId>
+	<artifactId>ftp-trans</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 备注author For LQ -->	
+	<!-- 打包格式，jar war都可以 -->	
+	<packaging>jar</packaging>
+	<name>ztxy.dwps</name>
+	<description>电子围栏系统数据处理服务程序</description>
+<!-- 统一版本管理 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+		<relativePath/> 
+	</parent>
+<!-- 编码格式utf-8 jdk1.8 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<mybatis.version>1.3.0</mybatis.version>
+		<pagehelp.version>5.1.4</pagehelp.version>
+		<shiro.version>1.4.0</shiro.version>
+		<thymeleaf.extras.shiro.version>2.0.0</thymeleaf.extras.shiro.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+		<fastjson.version>1.2.4</fastjson.version>
+	   	<commons.io.version>2.5</commons.io.version>
+	   	<jsoup.version>1.11.3</jsoup.version>
+		<poi.version>4.0.0</poi.version>
+		<bitwalker.version>1.19</bitwalker.version>
+		<commonio.version>2.6</commonio.version>
+		<commonsnet.version>3.6</commonsnet.version>
+      	<ehcache.version>2.10.5</ehcache.version>
+        <ehcache3.version>3.8.1</ehcache3.version>
+        <skipTests>true</skipTests>
+	</properties>
+<!-- 扩展组件库 -->	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<!-- apache开源String类型操作工具包 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<!-- SetGet工具 -->
+	    <dependency>
+	    	<groupId>org.projectlombok</groupId>
+	    	<artifactId>lombok</artifactId>
+	    	<optional>true</optional>
+	    </dependency>
+	    <!-- FTP工具类 -->
+	    <dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commonsnet.version}</version>
+		</dependency>
+	    <!-- 文件操作工具类 -->
+	  	<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commonio.version}</version>
+        </dependency>
+	   
+	   
+        <!--boot-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 热部署 -->		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+	</dependencies>
+
+<!-- 设定仓库 -->
+	<repositories>
+		<repository>
+			<id>central-repos</id>
+			<name>Central Repository</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>central-repos2</id>
+			<name>Central Repository 2</name>
+			<url>http://mvnrepo.code.taobao.org/nexus/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>springsource-repos</id>
+			<name>SpringSource Repository</name>
+			<url>http://mvnrepo.code.taobao.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	
+		<repository>
+			<id>bitwalker.user-agent-utils.mvn.repo</id>
+			<url>https://nexus.jackpinetech.com/nexus/content/groups/public</url>
+			<!-- use snapshot version -->
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
+			</plugin>
+			<plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-resources-plugin</artifactId>
+                 <configuration>
+                        <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<!-- <exclude>application.properties</exclude> -->
+					<exclude>logback-spring.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+</project>
