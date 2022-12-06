@@ -33,7 +33,7 @@
 		<poi.version>4.0.0</poi.version>
 		<bitwalker.version>1.19</bitwalker.version>
 		<commonio.version>2.6</commonio.version>
-		<commonsnet.version>3.6</commonsnet.version>
+		<commonsnet.version>3.9.0</commonsnet.version>
       	<ehcache.version>2.10.5</ehcache.version>
         <ehcache3.version>3.8.1</ehcache3.version>
         <skipTests>true</skipTests>
